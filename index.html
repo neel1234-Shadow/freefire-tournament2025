@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire Tournament</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0d0d0d;
+            color: white;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #1a1a1a;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            color: #ff4500;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .banner {
+            text-align: center;
+            padding: 100px 20px;
+            background: url('freefire-banner.jpg') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #ff4500;
+            color: white;
+            text-decoration: none;
+            font-size: 22px;
+            border-radius: 10px;
+        }
+        section {
+            padding: 50px;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1a1a1a;
+        }
+        .admin-login {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .contact {
+            text-align: center;
+            background-color: #222;
+            padding: 30px;
+        }
+        .contact a {
+            color: #ff4500;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Free Fire Tournament</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tournament">Tournament</a></li>
+                <li><a href="admin-panel.html">Admin Panel</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home" class="banner">
+        <h1>Join the Ultimate Free Fire Tournament</h1>
+        <p>Compete with the best players and win exclusive rewards!</p>
+        <a href="#tournament" class="btn">Register Now</a>
+    </section>
+    
+    <section id="tournament">
+        <h2>Upcoming Tournament</h2>
+        <img src="ff.jpg" alt="Free Fire Tournament" width="80%">
+        <p>Battle it out in the most intense Free Fire competition.</p>
+        <a href="https://ff.garena.com/" class="btn" target="_blank">Play Free Fire</a>
+    </section>
+    
+    <section id="admin">
+        <h2>Admin Panel</h2>
+        <p>Authorized users can access and manage tournament details.</p>
+        <a href="admin-login.html" class="btn">Admin Login</a>
+    </section>
+    
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Email: support@freefiretournament.com</p>
+        <p>Follow us on <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a></p>
+    </section>
+    
+    <footer>
+        <p>Enjoy and experience the new horizon.</p>
+    </footer>
+</body>
+</html>
