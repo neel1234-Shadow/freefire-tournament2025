@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Fire Tournament</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -22,41 +23,47 @@
     </header>
     
     <section id="home" class="banner">
-        <h1>Welcome to the Ultimate Free Fire Tournament</h1>
-        <p>Compete with the best and win amazing rewards!</p>
-        <a href="https://ff.garena.com/" class="btn">Play Free Fire</a>
+        <div class="banner-content">
+            <h1>Welcome to the Ultimate Free Fire Tournament</h1>
+            <p>Compete with the best and win amazing rewards!</p>
+            <a href="https://ff.garena.com/" class="btn">Play Free Fire</a>
+        </div>
     </section>
     
-    <section id="tournament">
+    <section id="tournament" class="tournament">
         <h2>Upcoming Tournament</h2>
-        <img src="ff.jpg" alt="Free Fire Tournament" width="80%">
+        <img src="ff.jpg" alt="Free Fire Tournament" class="tournament-img">
         <p>Join the Free Fire battle and prove your skills!</p>
     </section>
     
-    <section id="contact">
+    <section id="contact" class="contact">
         <h2>Contact Us</h2>
         <p>Email: support@freefiretournament.com</p>
         <p>Phone: +1234567890</p>
     </section>
     
     <div id="login-modal" class="modal">
-        <h2>Sign In</h2>
-        <input type="text" id="login-username" placeholder="Username">
-        <input type="password" id="login-password" placeholder="Password">
-        <button onclick="login()">Login</button>
-        <button onclick="closeModal()">Close</button>
+        <div class="modal-content">
+            <h2>Sign In</h2>
+            <input type="text" id="login-username" placeholder="Username">
+            <input type="password" id="login-password" placeholder="Password">
+            <button onclick="login()">Login</button>
+            <button onclick="closeModal()">Close</button>
+        </div>
     </div>
     
     <div id="signup-modal" class="modal">
-        <h2>Sign Up</h2>
-        <input type="text" id="signup-username" placeholder="Username">
-        <input type="password" id="signup-password" placeholder="Password">
-        <button onclick="signup()">Register</button>
-        <button onclick="closeModal()">Close</button>
+        <div class="modal-content">
+            <h2>Sign Up</h2>
+            <input type="text" id="signup-username" placeholder="Username">
+            <input type="password" id="signup-password" placeholder="Password">
+            <button onclick="signup()">Register</button>
+            <button onclick="closeModal()">Close</button>
+        </div>
     </div>
     
     <footer>
-        <p>&copy; 2025 Free Fire Tournament. All rights reserved.</p>
+        <p>Enjoy the new horizon.</p>
     </footer>
     
     <script>
