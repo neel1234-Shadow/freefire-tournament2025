@@ -3,31 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title>Free Fire Tournament</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body onload="checkLogin()">
+<body>
 
 <header>
-    <h1>Admin Panel</h1>
-    <button onclick="logout()">Logout</button>
+    <div class="logo">Free Fire Tournament</div>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#tournament">Tournament</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="admin-login.html">Admin</a></li>
+            <li><a href="javascript:void(0)" onclick="showForm('signup')">Sign Up</a></li>
+            <li><a href="javascript:void(0)" onclick="showForm('signin')">Sign In</a></li>
+            <li><a href="javascript:void(0)" onclick="requestAdmin()">Request Admin Access</a></li>
+        </ul>
+    </nav>
 </header>
 
-<div class="container">
-    <h2>Welcome, Admin!</h2>
-    <p>Manage users and tournaments here.</p>
+<section id="home" class="banner">
+    <h1>Welcome to the Ultimate Free Fire Tournament</h1>
+    <p>Compete with the best and win amazing rewards!</p>
+    <a href="#tournament" class="btn">Join Now</a>
+</section>
+
+<section id="tournament">
+    <h2>Upcoming Tournament</h2>
+    <img src="freefire-banner.jpg" alt="Free Fire Tournament" width="80%">
+    <p>Join the Free Fire battle and prove your skills!</p>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: support@freefiretournament.com</p>
+</section>
+
+<div id="form-container">
+    <div id="signup-form" class="form">
+        <h2>Sign Up</h2>
+        <input type="text" id="signup-username" placeholder="Username">
+        <input type="password" id="signup-password" placeholder="Password">
+        <button onclick="signup()">Sign Up</button>
+    </div>
+
+    <div id="signin-form" class="form">
+        <h2>Sign In</h2>
+        <input type="text" id="signin-username" placeholder="Username">
+        <input type="password" id="signin-password" placeholder="Password">
+        <button onclick="signin()">Sign In</button>
+    </div>
 </div>
 
+<footer>
+    <p>&copy; 2025 Free Fire Tournament. All rights reserved.</p>
+    <a href="https://ff.garena.com/" target="_blank">Play Free Fire</a>
+</footer>
+
 <script>
-    function checkLogin() {
-        if (localStorage.getItem("admin") !== "loggedIn") {
-            window.location.href = "admin-login.html"; // Redirect to login page if not logged in
+    function showForm(type) {
+        document.getElementById("signup-form").style.display = type === "signup" ? "block" : "none";
+        document.getElementById("signin-form").style.display = type === "signin" ? "block" : "none";
+    }
+
+    function signup() {
+        let user = document.getElementById("signup-username").value;
+        let pass = document.getElementById("signup-password").value;
+        if (!user || !pass) {
+            alert("Please enter all details");
+            return;
+        }
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+        users.push({ username: user, password: pass, isAdmin: false });
+        localStorage.setItem("users", JSON.stringify(users));
+        alert("Signup successful! Please Sign In.");
+        showForm("signin");
+    }
+
+    function signin() {
+        let user = document.getElementById("signin-username").value;
+        let pass = document.getElementById("signin-password").value;
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+        let validUser = users.find(u => u.username === user && u.password === pass);
+        if (validUser) {
+            localStorage.setItem("loggedInUser", JSON.stringify(validUser));
+            alert("Login successful!");
+        } else {
+            alert("Invalid credentials.");
         }
     }
 
-    function logout() {
-        localStorage.removeItem("admin");  // Clear login status
-        window.location.href = "admin-login.html"; // Redirect to login
+    function requestAdmin() {
+        let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+        if (!loggedInUser) {
+            alert("You need to sign in first.");
+            return;
+        }
+        let users = JSON.parse(localStorage.getItem("users"));
+        let userIndex = users.findIndex(u => u.username === loggedInUser.username);
+        if (users[userIndex].isAdmin) {
+            alert("You are already an admin.");
+            return;
+        }
+        users[userIndex].requestedAdmin = true;
+        localStorage.setItem("users", JSON.stringify(users));
+        alert("Admin access request sent.");
     }
 </script>
 
